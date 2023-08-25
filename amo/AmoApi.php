@@ -3,6 +3,7 @@
 namespace amo;
 
 const LEADS_METHOD = '/api/v4/leads';
+const LEADS_PARAMS = '?limit=10';
 
 class AmoApi
 {
@@ -21,7 +22,7 @@ class AmoApi
         if(!$this->access_token)
             return null;
 
-        $request_uri = $this->link . LEADS_METHOD;
+        $request_uri = $this->link . LEADS_METHOD . LEADS_PARAMS;
         $request_options = [
             'http' => [
                 'method' => 'GET',
