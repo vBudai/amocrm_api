@@ -36,12 +36,9 @@ class AmoApi
         $context = stream_context_create($request_options);
 
         $response = file_get_contents($request_uri, false, $context);
-
         echo '<pre>';
-        var_dump(json_decode($response)->_embedded->leads);
+        echo json_encode(json_decode($response)->_embedded->leads, JSON_PRETTY_PRINT);
         echo '</pre>';
-
-        return null;
     }
 
 
