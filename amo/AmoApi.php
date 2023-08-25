@@ -17,7 +17,7 @@ class AmoApi
     }
 
 
-    public function getLeads()
+    public function getLeads(): bool|string|null
     {
         if(!$this->access_token)
             return null;
@@ -36,10 +36,7 @@ class AmoApi
         $context = stream_context_create($request_options);
 
         $response = file_get_contents($request_uri, false, $context);
-        echo '<pre>';
-        echo json_encode(json_decode($response)->_embedded->leads, JSON_PRETTY_PRINT);
-        echo '</pre>';
+
+        return json_encode(json_decode($response)->_embedded->leads, JSON_PRETTY_PRINT);
     }
-
-
 }
